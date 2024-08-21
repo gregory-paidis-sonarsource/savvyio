@@ -88,6 +88,8 @@ jobs:
 
       - name: Install .NET Tool - Sonar Scanner
         uses: codebeltnet/dotnet-tool-install-sonarscanner@v1
+        with:
+          version: 8.0.0
 
       - name: Restore Dependencies
         uses: codebeltnet/dotnet-restore@v2
