@@ -83,8 +83,14 @@ jobs:
       - name: Checkout
         uses: codebeltnet/git-checkout@v1
 
-      - name: Install .NET
-        uses: codebeltnet/install-dotnet@v1
+      - name: 6.0.x
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 6.0.x
+      - name: 8.0.x
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
