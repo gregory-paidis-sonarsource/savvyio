@@ -160,8 +160,8 @@ jobs:
         uses: codebeltnet/sonarcloud-scan@v1
         with:
           token: ${{ secrets.SONAR_TOKEN }}
-          organization: geekle
-          projectKey: savvyio
+          organization: denis-troller
+          projectKey: denis-troller_savvyio
           version: ${{ needs.build.outputs.version }}
 
       - name: Build
