@@ -30,7 +30,6 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <SignAssembly Condition="('$(CI)' == 'true' OR '$(IsMainAuthor)' == 'true') AND '$(SkipSignAssembly)' == 'false'">true</SignAssembly>
-    <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)savvyio.snk</AssemblyOriginatorKeyFile>
     <NoWarn>7035</NoWarn>
     <MinVerTagPrefix>v</MinVerTagPrefix>
   </PropertyGroup>
