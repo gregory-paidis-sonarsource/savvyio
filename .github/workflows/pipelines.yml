@@ -66,13 +66,6 @@ jobs:
         name: Calculate Version
         uses: codebeltnet/minver-calculate@v2
 
-      - name: Download savvyio.snk file
-        uses: codebeltnet/gcp-download-file@v1
-        with: 
-          serviceAccountKey: ${{ secrets.GCP_TOKEN }}
-          bucketName: ${{ secrets.GCP_BUCKETNAME }}
-          objectName: savvyio.snk
-
       - name: Restore Dependencies
         uses: codebeltnet/dotnet-restore@v2
 
