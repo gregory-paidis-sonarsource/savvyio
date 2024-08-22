@@ -108,7 +108,7 @@ jobs:
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         run: |
-          mkdir ./.sonar/scanner -ItemType Directory
+          mkdir ./.sonar/scanner 
           dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
 
       - name: Restore Dependencies
