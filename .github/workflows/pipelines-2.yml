@@ -21,8 +21,8 @@ on:
       configuration:
         type: choice
         description: The build configuration to use in the deploy stage.
-        required: true
-        default: Release
+        required: false
+        default: Debug
         options:
           - Debug
           - Release
