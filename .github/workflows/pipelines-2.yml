@@ -27,6 +27,7 @@ on:
           - Debug
           - Release
 
+
 jobs:
   prepare:
     name: 🧰 Prepare
