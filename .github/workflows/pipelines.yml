@@ -1,4 +1,4 @@
-name: Savvyi I/O Pipeline
+name: Savvyi I/O Pipeline (8.0.1)
 on:
   push:
     branches: [main]
@@ -42,7 +42,7 @@ jobs:
         uses: codebeltnet/shell-globbing@v1
         with:
           pattern: test/**/*.csproj
-  
+
   build:
     name: 🛠️ Build
     runs-on: ubuntu-22.04
@@ -101,6 +101,11 @@ jobs:
           organization: denis-troller
           projectKey: denis-troller_savvyio
           version: ${{ needs.build.outputs.version }}
+          parameters: >-
+              -d:sonar.exclusions='**/obj/**,**/bin/**'
+              -d:sonar.sources='src/'
+              -d:sonar.tests='test/'
+              -d:sonar.verbose=true
 
       - name: Build
         uses: codebeltnet/dotnet-build@v2
@@ -112,7 +117,7 @@ jobs:
         uses: codebeltnet/sonarcloud-scan-finalize@v1
         with:
           token: ${{ secrets.SONAR_TOKEN }}
-          
+
   codeql:
     name: 🛡️ Security Analysis
     needs: [build]
@@ -139,4 +144,4 @@ jobs:
       - name: Finalize CodeQL SAST Analysis
         uses: codebeltnet/codeql-scan-finalize@v1
 
-  
+
