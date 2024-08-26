@@ -1,4 +1,4 @@
-name: Savvyi I/O Pipeline (8.0.1)
+name: Savvyi I/O Pipeline (7.1.0)
 on:
   push:
     branches: [main]
