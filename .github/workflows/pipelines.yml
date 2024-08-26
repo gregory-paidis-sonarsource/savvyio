@@ -98,7 +98,7 @@ jobs:
         uses: codebeltnet/sonarcloud-scan@v1
         with:
           token: ${{ secrets.SONAR_TOKEN }}
-          organization: denis-troller
+          organization: greggy42
           projectKey: denis-troller_savvyio
           version: ${{ needs.build.outputs.version }}
           parameters: >-
