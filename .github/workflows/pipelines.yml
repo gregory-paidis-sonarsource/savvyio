@@ -99,7 +99,7 @@ jobs:
         with:
           token: ${{ secrets.SONAR_TOKEN }}
           organization: greggy42
-          projectKey: denis-troller_savvyio
+          projectKey: dummy42
           version: ${{ needs.build.outputs.version }}
           parameters: >-
               -d:sonar.exclusions='**/obj/**,**/bin/**'
