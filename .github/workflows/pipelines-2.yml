@@ -42,7 +42,7 @@ jobs:
         uses: codebeltnet/shell-globbing@v1
         with:
           pattern: test/**/*.csproj
-  
+
   build:
     name: 🛠️ Build
     runs-on: ubuntu-22.04
@@ -92,24 +92,11 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v3
-        with:
-          path: ~/sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-      - name: Cache SonarCloud scanner
-        id: cache-sonar-scanner
-        uses: actions/cache@v3
-        with:
-          path: ./.sonar/scanner
-          key: ${{ runner.os }}-sonar-scanner
-          restore-keys: ${{ runner.os }}-sonar-scanner
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         run: |
-          mkdir -p .sonar/scanner 
-          dotnet tool update dotnet-sonarscanner --tool-path .sonar/scanner
+          mkdir -p .sonar/scanner
+          dotnet tool install dotnet-sonarscanner --tool-path .sonar/scanner --version 7.1.1
 
       - name: Restore Dependencies
         uses: codebeltnet/dotnet-restore@v2
@@ -122,7 +109,7 @@ jobs:
           ./.sonar/scanner/dotnet-sonarscanner begin /k:"denis-troller_savvyio" /o:"denis-troller" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.exclusions="**/obj/**,**/bin/**" /d:sonar.sources="src/" /d:sonar.tests="test/"
           dotnet build
           ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-          
+
   codeql:
     name: 🛡️ Security Analysis
     needs: [build]
@@ -149,4 +136,4 @@ jobs:
       - name: Finalize CodeQL SAST Analysis
         uses: codebeltnet/codeql-scan-finalize@v1
 
-  
+
